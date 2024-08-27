@@ -18,7 +18,17 @@ switch ($op) {
   case '/':
     if ($v2 != 0) {
       $result = $v1 / $v2;
+      break;
     }
+    case 'sqrt':
+      if($v1 > 0){
+     $result =  sqrt($v1);
+     break;
+    } else{
+      $result = sqrt($v2);
+      break;
+
+    } 
 }
 ?>
 
@@ -33,6 +43,8 @@ switch ($op) {
 
 <body>
   <?php echo "<h1>Resultado: $result</h1>"; ?>
+  <?php echo "<h1>Operador: $$op</h1>"; ?>
+
 </body>
 
 </html>
