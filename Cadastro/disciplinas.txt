@@ -13,3 +13,4 @@ Matemática Aplicada	;MAT;80
 ;;
 ;;
 desenvolvimento werb;dw;80
+Dar aula;mpb;33h
