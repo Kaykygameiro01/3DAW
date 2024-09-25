@@ -24,23 +24,30 @@
       <th>ID</th>
       <th>Pergunta</th>
       <th>Respostas</th>
+      <th>Ações</th> <!-- Nova coluna para ações -->
     </tr>
 
     <?php
     $arquivo = "perguntas.txt";
-    $linhas = file($arquivo, FILE_IGNORE_NEW_LINES);
+    if (file_exists($arquivo)) {
+      $linhas = file($arquivo, FILE_IGNORE_NEW_LINES);
 
-    foreach ($linhas as $linha) {
-      $dados = explode(';', $linha);
-      $id = $dados[0];
-      $pergunta = $dados[1];
-      $respostas = $dados[2];
+      foreach ($linhas as $linha) {
+        $dados = explode(';', $linha);
+        $id = $dados[0];
+        $pergunta = $dados[1];
+        $respostas = $dados[2];
 
-      echo "<tr>";
-      echo "<td>$id</td>";
-      echo "<td>$pergunta</td>";
-      echo "<td>$respostas</td>";
-      echo "</tr>";
+        echo "<tr>";
+        echo "<td>$id</td>";
+        echo "<td>$pergunta</td>";
+        echo "<td>$respostas</td>";
+        // Adiciona o link para a página de alteração
+        echo "<td><a href='alterar_pergunta.php?id=$id'>Alterar</a></td>";
+        echo "</tr>";
+      }
+    } else {
+      echo "<tr><td colspan='4'>Nenhuma pergunta encontrada.</td></tr>";
     }
     ?>
 

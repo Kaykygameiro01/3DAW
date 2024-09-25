@@ -2,20 +2,24 @@
 $msg = "";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $pergunta = $_POST["pergunta"];
-  $respostas = $_POST["resposta"];
+  $respostas = $_POST["respostas"];
 
-  echo "Pergunta: " . $pergunta . " | Resposta: " . $respostas . "<br>";
+  if (empty($pergunta) || empty($respostas) || in_array("", $respostas)) {
+    $msg = "Preencha todos os campos!";
+  } else {
+    echo "Pergunta: " . $pergunta . "<br>";
+    echo "Respostas: " . implode(", ", $respostas) . "<br>";
 
-  $arqDisc = fopen("perguntas.txt", "a") or die("Erro ao criar arquivo");
+    $arqDisc = fopen("perguntas.txt", "a") or die("Erro ao criar arquivo");
 
-  $linha = $pergunta . ";" . $respostas . "\n";
+    $id = uniqid();
+    $linha = $id . ";" . $pergunta . ";" . implode("|", $respostas) . "\n";
 
-  fwrite($arqDisc, $linha);
-  
-  $id = uniqid();
+    fwrite($arqDisc, $linha);
+    fclose($arqDisc);
 
-  fclose($arqDisc);
-  $msg = "Pergunta cadastrada com sucesso!";
+    $msg = "Pergunta cadastrada com sucesso!";
+  }
 }
 ?>
 
@@ -32,12 +36,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   <h1>Criar nova Pergunta</h1>
 
   <form action="" method="POST">
-    Pergunta: <input type="text" name="pergunta"><br><br>
-    Respostas: <input type="text" name="respostas"><br><br>
-    Respostas: <input type="text" name="respostas"><br><br>
-    Respostas: <input type="text" name="respostas"><br><br>
-    Respostas: <input type="text" name="respostas"><br><br>
-
+    Pergunta: <input type="text" name="pergunta" required><br><br>
+    Resposta 1: <input type="text" name="respostas[]" required><br><br>
+    Resposta 2: <input type="text" name="respostas[]" required><br><br>
+    Resposta 3: <input type="text" name="respostas[]" required><br><br>
+    Resposta 4: <input type="text" name="respostas[]" required><br><br>
 
     <input type="submit" value="Criar nova pergunta">
   </form>
