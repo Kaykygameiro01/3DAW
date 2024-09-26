@@ -1,1 +1,2 @@
-66f38a4bc0346;Em que continente está localizado Portugal?;américa|asia|europa|africa
+66f573fb1ec16;Quem foi a primeira pessoa a viajar no Espaço?;a) Yuri Gagarin|b) A cadela Laika|c) Neil Armstrong|d) Marcos Pontes
+66f5741f34ab4;4. Que país tem o formato de uma bota?;a) Butão|b) Brasil|c) Portugal|d) Itália

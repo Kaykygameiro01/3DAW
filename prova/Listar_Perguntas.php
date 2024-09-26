@@ -42,8 +42,8 @@
         echo "<td>$id</td>";
         echo "<td>$pergunta</td>";
         echo "<td>$respostas</td>";
-        // Adiciona o link para a página de alteração
-        echo "<td><a href='alterar_pergunta.php?id=$id'>Alterar</a></td>";
+        echo "<td><a href='alterar_pergunta.php?id=$id'>Alterar</a> | ";
+        echo "<a href='excluir_pergunta.php?id=$id' onclick='return confirm(\"Tem certeza que deseja excluir esta pergunta?\");'>Excluir</a></td>";
         echo "</tr>";
       }
     } else {
