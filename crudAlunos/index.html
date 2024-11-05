@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Alunos</title>
+</head>
+
+<body>
+  <h1>Cadastro de Alunos</h1>
+
+  <form id="alunoForm">
+    <input type="hidden" id="idAluno" />
+    <label>Nome:</label>
+    <input type="text" id="nomeAluno" required>
+    <label>Email:</label>
+    <input type="email" id="emailAluno" required>
+    <label>Idade:</label>
+    <input type="number" id="idadeAluno" required>
+    <button type="submit">Salvar</button>
+  </form>
+
+  <h2>Alunos Cadastrados</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Idade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="listaAlunos"></tbody>
+  </table>
+
+  <script>
+    document.getElementById("alunoForm").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const id = document.getElementById("idAluno").value;
+      const nome = document.getElementById("nomeAluno").value;
+      const email = document.getElementById("emailAluno").value;
+      const idade = document.getElementById("idadeAluno").value;
+
+      const dados = new FormData();
+      dados.append("nome", nome);
+      dados.append("email", email);
+      dados.append("idade", idade);
+
+      const url = id ? "atualizar_aluno.php" : "criar_aluno.php";
+      if (id) dados.append("id", id);
+
+      fetch(url, { method: "POST", body: dados })
+        .then(() => {
+          document.getElementById("alunoForm").reset();
+          carregarAlunos();
+        });
+    });
+
+    function carregarAlunos() {
+      fetch("listar_alunos.php")
+        .then(response => response.json())
+        .then(alunos => {
+          const tabela = document.getElementById("listaAlunos");
+          tabela.innerHTML = "";
+
+          alunos.forEach(aluno => {
+            const linha = document.createElement("tr");
+            linha.innerHTML = `
+                            <td>${aluno.id}</td>
+                            <td>${aluno.nome}</td>
+                            <td>${aluno.email}</td>
+                            <td>${aluno.idade}</td>
+                            <td>
+                                <button onclick="editarAluno(${aluno.id}, '${aluno.nome}', '${aluno.email}', ${aluno.idade})">Editar</button>
+                                <button onclick="excluirAluno(${aluno.id})">Excluir</button>
+                            </td>
+                        `;
+            tabela.appendChild(linha);
+          });
+        });
+    }
+
+    function editarAluno(id, nome, email, idade) {
+      document.getElementById("idAluno").value = id;
+      document.getElementById("nomeAluno").value = nome;
+      document.getElementById("emailAluno").value = email;
+      document.getElementById("idadeAluno").value = idade;
+    }
+
+    function excluirAluno(id) {
+      const dados = new FormData();
+      dados.append("id", id);
+
+      fetch("deletar_aluno.php", { method: "POST", body: dados })
+        .then(() => carregarAlunos());
+    }
+
+    carregarAlunos();
+  </script>
+</body>
+
+</html>

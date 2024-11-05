@@ -1,0 +1,9 @@
+CREATE DATABASE escola;
+USE escola;
+
+CREATE TABLE alunos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    idade INT NOT NULL
+);
