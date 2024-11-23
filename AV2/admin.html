@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administração - Minimundo Albergue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Administração de Quartos</h1>
+  </header>
+  <main>
+    <!-- Seção de Quartos Cadastrados -->
+    <section id="room-list">
+      <h2>Quartos Cadastrados</h2>
+      <!-- Botão para adicionar novo quarto -->
+      <button id="add-room-button">Adicionar Novo Quarto</button>
+    </section>
+
+    <!-- Formulário de adição de quarto (inicialmente escondido) -->
+    <section id="add-room-form" style="display: none;">
+      <h2>Adicionar Novo Quarto</h2>
+      <form id="new-room-form">
+        <label for="type">Tipo de Quarto</label>
+        <input type="text" id="type" name="type" required>
+
+        <label for="description">Descrição</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="price">Preço</label>
+        <input type="number" id="price" name="price" min="0" step="0.01" required>
+
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+          <option value="available">Disponível</option>
+          <option value="occupied">Ocupado</option>
+        </select>
+
+        <label for="image_url">URL da Imagem</label>
+        <input type="text" id="image_url" name="image_url">
+
+        <button type="submit">Adicionar Quarto</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

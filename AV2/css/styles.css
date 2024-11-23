@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+}
+header {
+  background-color: #5d5c61;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+main {
+  padding: 20px;
+}
+.room {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #fff;
+}
+button {
+  background-color: #5d5c61;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.room-image {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+/* Estilo para a seção dos quartos */
+.room-list {
+  display: flex;            /* Usar flexbox para alinhar elementos horizontalmente */
+  justify-content: space-between; /* Alinhar o título à esquerda e o botão à direita */
+  align-items: center;      /* Alinhar verticalmente */
+  margin-bottom: 20px;      /* Adicionar margem abaixo da seção */
+}
+
+/* Estilo do botão */
+#add-room-button {
+  padding: 10px 20px;
+  background-color: #5d5c61;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#add-room-button:hover {
+  background-color: #4a4945;
+}
+
+/* Imagens responsivas */
+img {
+  width: 100%;  /* A imagem será redimensionada de acordo com a largura do contêiner */
+  height: auto; /* A altura será ajustada automaticamente para manter a proporção */
+  max-width: 300px; /* A largura máxima será 300px */
+}
+
+

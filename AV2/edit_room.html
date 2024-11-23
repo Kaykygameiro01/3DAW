@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Quarto</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Editar Quarto</h1>
+  </header>
+  <main>
+    <section id="edit-room-form">
+      <h2>Alterar Dados do Quarto</h2>
+      <form id="edit-form">
+        <input type="hidden" id="room-id" name="id"> <!-- Para armazenar o ID do quarto -->
+        <label for="type">Tipo de Quarto</label>
+        <input type="text" id="type" name="type" required>
+
+        <label for="description">Descrição</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="price">Preço</label>
+        <input type="number" id="price" name="price" min="0" step="0.01" required>
+
+        <label for="status">Status</label>
+        <select id="status" name="status" required>
+          <option value="available">Disponível</option>
+          <option value="occupied">Ocupado</option>
+        </select>
+
+        <label for="image_url">URL da Imagem</label>
+        <input type="text" id="image_url" name="image_url">
+
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/edit_room.js"></script>
+</body>
+
+</html>

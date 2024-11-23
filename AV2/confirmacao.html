@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmação de Reserva</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Confirmação de Reserva</h1>
+  </header>
+  <main>
+    <section id="confirmation">
+      <p>Carregando detalhes da reserva...</p>
+    </section>
+    <button onclick="window.location.href='index.html'">Voltar à Página Inicial</button>
+  </main>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const reservationId = urlParams.get('reservation_id');
+
+      fetch(`php/get_reservation.php?reservation_id=${reservationId}`)
+        .then(response => response.json())
+        .then(data => {
+          const confirmationSection = document.getElementById("confirmation");
+          confirmationSection.innerHTML = `
+                        <h2>Detalhes da Reserva</h2>
+                        <p><strong>Quarto:</strong> ${data.room.type} (${data.room.description})</p>
+                        <p><strong>Check-in:</strong> ${data.check_in}</p>
+                        <p><strong>Check-out:</strong> ${data.check_out}</p>
+                        <p><strong>Hóspedes:</strong> ${data.guests}</p>
+                        <p>Obrigado por reservar conosco!</p>
+                    `;
+        })
+        .catch(error => {
+          console.error("Erro ao carregar detalhes da reserva:", error);
+          document.getElementById("confirmation").innerHTML = `
+                        <p>Erro ao carregar os detalhes da reserva. Tente novamente mais tarde.</p>
+                    `;
+        });
+    });
+  </script>
+</body>
+
+</html>
