@@ -1,25 +1,51 @@
+/* Estilo geral */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
 }
+
 header {
   background-color: #5d5c61;
   color: white;
   text-align: center;
   padding: 20px;
 }
+
 main {
   padding: 20px;
 }
+
+/* Estilo para os quartos */
 .room {
   border: 1px solid #ccc;
   padding: 20px;
   margin: 10px 0;
   border-radius: 5px;
   background-color: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; /* Espaço entre a imagem e o texto */
 }
+
+.room img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 5px;
+}
+
+/* Estilo do texto dentro dos quartos */
+.room-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.room p {
+  margin: 5px 0;
+}
+
 button {
   background-color: #5d5c61;
   color: white;
@@ -28,25 +54,19 @@ button {
   border-radius: 5px;
   cursor: pointer;
 }
+
+button:hover {
+  background-color: #4a4945;
+}
+
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
-.room-image {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-/* Estilo para a seção dos quartos */
-.room-list {
-  display: flex;            /* Usar flexbox para alinhar elementos horizontalmente */
-  justify-content: space-between; /* Alinhar o título à esquerda e o botão à direita */
-  align-items: center;      /* Alinhar verticalmente */
-  margin-bottom: 20px;      /* Adicionar margem abaixo da seção */
-}
 
-/* Estilo do botão */
+/* Botão para adicionar novo quarto */
 #add-room-button {
+  display: inline-block;
   padding: 10px 20px;
   background-color: #5d5c61;
   color: white;
@@ -60,11 +80,62 @@ button:disabled {
   background-color: #4a4945;
 }
 
+/* Estilo para a seção dos quartos */
+#room-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.room-list-header {
+  display: flex;
+  justify-content: space-between; /* Título à esquerda, botão à direita */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.room-list-header h2 {
+  margin: 0;
+}
+
 /* Imagens responsivas */
 img {
-  width: 100%;  /* A imagem será redimensionada de acordo com a largura do contêiner */
+  width: 100%; /* A imagem será redimensionada de acordo com a largura do contêiner */
   height: auto; /* A altura será ajustada automaticamente para manter a proporção */
   max-width: 300px; /* A largura máxima será 300px */
 }
 
+/* Formulário de adição de quarto */
+#add-room-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+  
+}
 
+#add-room-form h2 {
+  margin-top: 0;
+}
+
+#add-room-form label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+#add-room-form input,
+#add-room-form textarea,
+#add-room-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+#add-room-form button[type="submit"] {
+  width: 100%;
+  margin-top: 15px;
+  font-size: 16px;
+}
