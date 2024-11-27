@@ -14,6 +14,7 @@ if ($conn->connect_error) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  error_log(print_r($_POST, true));
   $id = $_POST['id'];
   $type = $_POST['type'];
   $description = $_POST['description'];

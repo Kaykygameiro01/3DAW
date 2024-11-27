@@ -1,62 +1,52 @@
-/* Estilo geral */
+:root {
+  --primary-color: #6c5ce7; /* Cor principal (botões e destaques) */
+  --primary-hover: #4834d4; /* Cor de hover nos botões */
+  --secondary-color: #5d5c61; /* Cor secundária */
+  --background-color: #f4f4f9; /* Cor de fundo */
+  --text-color: #333; /* Cor do texto */
+}
+
 body {
-  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
 }
 
 header {
-  background-color: #5d5c61;
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
   color: white;
+  padding: 10px 20px;
   text-align: center;
-  padding: 20px;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
 }
 
 main {
   padding: 20px;
 }
 
-/* Estilo para os quartos */
-.room {
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 5px;
-  background-color: #fff;
-  display: flex;
-  align-items: flex-start;
-  gap: 15px; /* Espaço entre a imagem e o texto */
-}
-
-.room img {
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 5px;
-}
-
-/* Estilo do texto dentro dos quartos */
-.room-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.room p {
-  margin: 5px 0;
-}
-
+/* Estilo para botões */
 button {
-  background-color: #5d5c61;
+  background-color: var(--primary-color);
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
-  background-color: #4a4945;
+  background-color: var(--primary-hover);
 }
 
 button:disabled {
@@ -64,23 +54,60 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* Botão para adicionar novo quarto */
-#add-room-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #5d5c61;
+/* Estilo para as seções */
+.room {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.room img {
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.room p {
+  margin: 5px 0;
+  color: var(--text-color);
+}
+
+/* Formulários */
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
   color: white;
   border: none;
+  padding: 12px;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
+  cursor: pointer;
 }
 
-#add-room-button:hover {
-  background-color: #4a4945;
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
 }
 
-/* Estilo para a seção dos quartos */
+/* Estilo para listas de quartos */
 #room-list {
   display: flex;
   flex-direction: column;
@@ -112,7 +139,6 @@ img {
   border-radius: 5px;
   padding: 20px;
   margin-top: 20px;
-  
 }
 
 #add-room-form h2 {
@@ -138,4 +164,42 @@ img {
   width: 100%;
   margin-top: 15px;
   font-size: 16px;
+}
+
+/* Estilo para a página de edição */
+#edit-room-form {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+#edit-room-form h2 {
+  margin-top: 0;
+}
+
+#edit-room-form label {
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+#edit-room-form input,
+#edit-room-form textarea,
+#edit-room-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }

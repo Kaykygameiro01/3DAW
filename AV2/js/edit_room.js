@@ -26,20 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
+
+    // Log para depuração
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`); // Deve incluir "status: available" ou "status: occupied"
+    }
+
     fetch('php/edit_room.php', {
       method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        alert('Quarto atualizado com sucesso!');
-        window.location.href = 'admin.html'; // Redirecionar de volta para a administração
+        alert(data.message || 'Quarto atualizado com sucesso!');
+        window.location.href = 'admin.html';
       })
       .catch((error) => {
         console.error('Erro ao atualizar o quarto:', error);
-        alert(
-          'Erro ao atualizar o quarto. Verifique o console para mais detalhes.',
-        );
       });
   });
 });
