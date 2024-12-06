@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Reservas - Minimundo Albergue</title>
+  <link rel="stylesheet" href="css/styles.css"> <!-- Estilização compartilhada -->
+</head>
+
+<body>
+  <header>
+    <h1>Relatório de Reservas</h1>
+    <nav>
+      <a href="index.html">Início</a> |
+      <a href="admin_quartos.html">Administração de Quartos</a> |
+      <a href="sair.html">Sair</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="filters">
+      <h2>Filtrar Reservas</h2>
+      <form id="filter-form">
+        <label for="date-start">Data de Início:</label>
+        <input type="date" id="date-start" name="date-start" required>
+
+        <label for="date-end">Data de Fim:</label>
+        <input type="date" id="date-end" name="date-end" required>
+
+        <button type="submit">Filtrar</button>
+      </form>
+    </section>
+
+    <section id="reservations-report">
+      <h2>Lista de Reservas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome do Cliente</th>
+            <th>Data de Entrada</th>
+            <th>Data de Saída</th>
+            <th>Quarto</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Os dados serão carregados dinamicamente via JavaScript -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/relatorio_reservas.js"></script>
+</body>
+
+</html>

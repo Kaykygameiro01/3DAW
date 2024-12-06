@@ -17,6 +17,12 @@
       <label for="room-id">ID do Quarto</label>
       <input type="text" id="room-id" name="room_id" readonly>
 
+      <label for="guest-name">Nome do Hóspede</label>
+      <input type="text" id="guest-name" name="guest_name" required>
+
+      <label for="guest-cpf">CPF do Hóspede</label>
+      <input type="text" id="guest-cpf" name="guest_cpf" required>
+
       <label for="check-in">Data de Check-in</label>
       <input type="date" id="check-in" name="check_in" required>
 
@@ -26,9 +32,21 @@
       <label for="guests">Número de Hóspedes</label>
       <input type="number" id="guests" name="guests" min="1" required>
 
+      <!-- Campo de Pagamento -->
+      <h3>Informações de Pagamento</h3>
+      <label for="card-number">Número do Cartão de Crédito</label>
+      <input type="text" id="card-number" name="card_number" placeholder="1234 5678 9012 3456" required>
+
+      <label for="card-expiry">Data de Validade (MM/AAAA)</label>
+      <input type="date" id="card-expiry" name="card_expiry" placeholder="MM/AAAA" required>
+
+      <label for="card-cvv">Código de Segurança (CVV)</label>
+      <input type="text" id="card-cvv" name="card_cvv" placeholder="123" required>
+
       <button type="submit">Confirmar Reserva</button>
     </form>
   </main>
+
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const roomId = urlParams.get('room_id');
@@ -37,7 +55,7 @@
     document.getElementById("reservation-form").addEventListener("submit", (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
-      fetch("php/fazer_reserva.php", {
+      fetch("php/realizar_reserva.php", {
         method: "POST",
         body: formData
       })

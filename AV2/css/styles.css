@@ -196,10 +196,122 @@ img {
 
 /* Links */
 a {
-  color: var(--primary-color);
+  color: #fff;
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
+}
+
+:root {
+  --primary-color: #6c5ce7; /* Cor principal (botões e destaques) */
+  --primary-hover: #4834d4; /* Cor de hover nos botões */
+  --secondary-color: #5d5c61; /* Cor secundária */
+  --background-color: #f4f4f9; /* Cor de fundo */
+  --text-color: #333; /* Cor do texto */
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto', Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+main {
+  padding: 20px;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin: 10px 0 5px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Estilo adicional para campos de pagamento */
+#card-number, #cvv, #expiry-date {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#card-number {
+  text-transform: uppercase;
+}
+
+#expiry-date {
+  width: 50%;
+  display: inline-block;
+}
+
+#cvv {
+  width: 30%;
+  display: inline-block;
 }

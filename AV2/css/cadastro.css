@@ -1,0 +1,82 @@
+:root {
+  --primary-color: #007bff; /* Cor principal (botões e destaques) */
+  --primary-hover: #0056b3; /* Cor de hover nos botões */
+  --secondary-color: #5d5c61; /* Cor secundária */
+  --background-color: #f4f4f9; /* Cor de fundo */
+  --text-color: #333; /* Cor do texto */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--primary-hover);
+}
+
+p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  z-index: 1000;
+}
+
+main {
+  padding: 20px;
+}
+
+div {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 300px;
+}

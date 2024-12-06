@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Função para carregar os quartos cadastrados
   function loadRooms() {
-    fetch('php/rooms.php')
+    fetch('php/quartos.php')
       .then((response) => response.json()) // Receber o JSON do PHP
       .then((data) => {
         const roomList = document.getElementById('room-list');
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('new-room-form').addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    fetch('php/add_room.php', {
+    fetch('php/adicionar_quarto.php', {
       method: 'POST',
       body: formData,
     })
@@ -78,7 +78,7 @@ function editRoom(roomId) {
 // Função para excluir um quarto
 function deleteRoom(roomId) {
   if (confirm('Tem certeza que deseja excluir este quarto?')) {
-    fetch(`php/delete_room.php?id=${roomId}`, {
+    fetch(`php/deletar_quarto.php?id=${roomId}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -91,5 +91,5 @@ function deleteRoom(roomId) {
 }
 // Função para editar um quarto
 function editRoom(roomId) {
-  window.location.href = `edit_room.html?id=${roomId}`; // Redirecionar para a página de edição com o ID do quarto
+  window.location.href = `editar_quarto.html?id=${roomId}`; // Redirecionar para a página de edição com o ID do quarto
 }

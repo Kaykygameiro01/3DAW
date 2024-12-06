@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadAvailableRooms();
 
   function loadAvailableRooms() {
-    fetch('php/rooms.php')
+    fetch('php/quartos.php')
       .then((response) => response.json())
       .then((data) => {
         const roomSection = document.getElementById('available-rooms');
@@ -44,7 +44,7 @@ function reserveRoom(roomId) {
   );
 
   if (confirmReservation) {
-    fetch(`php/reserve_room.php`, {
+    fetch(`php/reservar_quarto.php`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
