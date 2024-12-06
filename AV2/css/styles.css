@@ -4,6 +4,7 @@
   --secondary-color: #5d5c61; /* Cor secundária */
   --background-color: #f4f4f9; /* Cor de fundo */
   --text-color: #333; /* Cor do texto */
+  --header-text-color: #fff; /* Cor do texto no cabeçalho */
 }
 
 body {
@@ -19,299 +20,250 @@ header {
   position: sticky;
   top: 0;
   background-color: var(--primary-color);
-  color: white;
-  padding: 10px 20px;
+  color: var(--header-text-color);
+  padding: 15px 20px;
   text-align: center;
   z-index: 1000;
+  display: flex; /* Flexbox para facilitar o layout */
+  justify-content: space-between; /* Espaço entre os elementos principais */
+  align-items: center; /* Centraliza verticalmente */
 }
 
 header h1 {
   margin: 0;
+  font-size: 28px;
+  flex: 1; /* Ocupará o máximo de espaço possível */
+}
+
+header .links {
+  display: flex; /* Organiza os links como um grupo */
+  gap: 10px; /* Espaçamento entre os links */
+}
+
+header a {
+  background-color: var(--secondary-color);
+  color: var(--header-text-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header a:hover {
+  background-color: var(--primary-hover);
+}
+
+
+#sobre-nos {
+  background-color: var(--secondary-color);
+  color: var(--header-text-color);
+  padding: 20px;
+  text-align: center;
+}
+
+#sobre-nos h2 {
   font-size: 24px;
+  margin-bottom: 15px;
+}
+
+#sobre-nos p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 16px;
 }
 
 main {
   padding: 20px;
 }
 
-/* Estilo para botões */
-button {
+#rooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.room {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.room h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.room p {
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.room button {
+  margin-top: 10px;
   background-color: var(--primary-color);
-  color: white;
+  color: #fff;
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
+.room button:hover {
   background-color: var(--primary-hover);
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Estilo para as seções */
-.room {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  margin: 15px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .room img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
+  width: auto; /* Permite que a largura se ajuste automaticamente */
+  max-width: 100%; /* Limita a largura máxima ao contêiner */
+  height: 150px; /* Define uma altura fixa para as imagens */
+  object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorcer */
+  margin: 0 auto; /* Centraliza a imagem horizontalmente */
+  display: block;
+  border-radius: 5px; /* Mantém bordas arredondadas */
 }
 
-.room p {
-  margin: 5px 0;
-  color: var(--text-color);
-}
+/* Ajustes para responsividade */
+@media (max-width: 768px) {
+  header a {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
 
-/* Formulários */
-input, textarea, select {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
+  #rooms {
+    flex-direction: column;
+    align-items: center;
+  }
 
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 5px var(--primary-color);
-}
-
-button[type="submit"] {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button[type="submit"]:hover {
-  background-color: var(--primary-hover);
-}
-
-/* Estilo para listas de quartos */
-#room-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.room-list-header {
-  display: flex;
-  justify-content: space-between; /* Título à esquerda, botão à direita */
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.room-list-header h2 {
-  margin: 0;
-}
-
-/* Imagens responsivas */
-img {
-  width: 100%; /* A imagem será redimensionada de acordo com a largura do contêiner */
-  height: auto; /* A altura será ajustada automaticamente para manter a proporção */
-  max-width: 300px; /* A largura máxima será 300px */
-}
-
-/* Formulário de adição de quarto */
-#add-room-form {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-#add-room-form h2 {
-  margin-top: 0;
-}
-
-#add-room-form label {
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-#add-room-form input,
-#add-room-form textarea,
-#add-room-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-#add-room-form button[type="submit"] {
-  width: 100%;
-  margin-top: 15px;
-  font-size: 16px;
-}
-
-/* Estilo para a página de edição */
-#edit-room-form {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 20px;
-}
-
-#edit-room-form h2 {
-  margin-top: 0;
-}
-
-#edit-room-form label {
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-#edit-room-form input,
-#edit-room-form textarea,
-#edit-room-form select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-/* Links */
-a {
-  color: #fff;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-:root {
-  --primary-color: #6c5ce7; /* Cor principal (botões e destaques) */
-  --primary-hover: #4834d4; /* Cor de hover nos botões */
-  --secondary-color: #5d5c61; /* Cor secundária */
-  --background-color: #f4f4f9; /* Cor de fundo */
-  --text-color: #333; /* Cor do texto */
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Roboto', Arial, sans-serif;
-  line-height: 1.6;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  background-color: var(--primary-color);
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  z-index: 1000;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 24px;
-}
-
-main {
-  padding: 20px;
+  .room {
+    width: 90%;
+  }
 }
 
 form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: white; /* Fundo branco */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  width: 100%; /* Largura total do contêiner pai */
+  max-width: 600px; /* Largura máxima */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 form h2 {
+  margin-bottom: 15px; /* Espaço inferior */
+  font-size: 20px; /* Tamanho da fonte */
+  text-align: center; /* Centraliza o texto */
+}
+
+form label {
+  font-weight: bold; /* Deixa o texto em negrito */
+  margin: 10px 0 5px; /* Espaçamento entre os elementos */
+  display: block; /* Garante que o rótulo fique em linha separada */
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%; /* Largura total */
+  padding: 10px; /* Espaçamento interno */
+  margin: 10px 0; /* Espaçamento externo */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 5px; 
+  font-size: 14px; 
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  outline: none; 
+  border-color: var(--primary-color); 
+  box-shadow: 0 0 5px var(--primary-color); 
+}
+
+form button {
+  background-color: var(--primary-color);
+  color: white; 
+  padding: 10px 15px;
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  font-weight: bold; 
+  width: 100%; 
+}
+
+form button:hover {
+  background-color: var(--primary-hover); /* Cor ao passar o mouse */
+}
+
+form#new-room-form .form-group {
   margin-bottom: 15px;
-  font-size: 20px;
 }
 
-label {
-  font-weight: bold;
-  margin: 10px 0 5px;
+form#new-room-form label {
   display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-input {
+form#new-room-form input,
+form#new-room-form textarea,
+form#new-room-form select {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   border-radius: 5px;
   font-size: 14px;
 }
 
-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 5px var(--primary-color);
-}
-
-button[type="submit"] {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 12px;
+form#new-room-form button {
+  background-color: var(--secondary-color);
+  color: #fff;
   border: none;
+  padding: 10px 20px;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
-  width: 100%;
 }
 
-button[type="submit"]:hover {
+form#new-room-form button:hover {
   background-color: var(--primary-hover);
 }
 
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
+
+/* Quartos Cadastrados */
+#room-list {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 20px; /* Espaçamento entre os quartos */
 }
 
-/* Estilo adicional para campos de pagamento */
-#card-number, #cvv, #expiry-date {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+#room-list .room {
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para destaque */
 }
 
-#card-number {
-  text-transform: uppercase;
+#room-list .room h3 {
+  margin: 0 0 10px;
 }
 
-#expiry-date {
-  width: 50%;
-  display: inline-block;
+#room-list .room p {
+  margin: 5px 0;
+}
+#add-room-form h2 {
+  text-align: center; /* Centraliza o texto do título */
+  margin-bottom: 20px; /* Espaço entre o título e o formulário */
 }
 
-#cvv {
-  width: 30%;
-  display: inline-block;
-}
+
