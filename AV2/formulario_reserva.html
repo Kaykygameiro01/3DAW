@@ -55,17 +55,29 @@
     document.getElementById("reservation-form").addEventListener("submit", (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
+
       fetch("php/realizar_reserva.php", {
         method: "POST",
-        body: formData
+        body: formData,
       })
-        .then(response => response.json())
-        .then(data => {
-          alert(data.message || "Reserva feita com sucesso!");
-          window.location.href = `confirmacao.html?reservation_id=${data.reservation_id}`;
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Resposta da API:", data); // Depuração
+          if (data.error) {
+            alert(`Erro: ${data.error}`);
+          } else if (data.message && data.reservation_id) {
+            alert(data.message);
+            window.location.href = `confirmacao.html?reservation_id=${data.reservation_id}`;
+          } else {
+            alert("Erro desconhecido. Verifique os dados.");
+          }
         })
-        .catch(error => console.error("Erro ao fazer reserva:", error));
+        .catch((error) => {
+          console.error("Erro ao fazer a reserva:", error);
+          alert("Não foi possível processar a reserva. Tente novamente.");
+        });
     });
+
   </script>
 </body>
 

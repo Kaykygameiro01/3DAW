@@ -25,18 +25,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $card_expiry = $_POST['card_expiry'];
   $card_cvv = $_POST['card_cvv'];
 
-  // Verifica a disponibilidade do quarto (opcional)
-  // Aqui você pode adicionar lógica para garantir que o quarto está disponível
+  // Validação (exemplo: certifique-se de que o número de hóspedes é válido)
+  if ($guests < 1) {
+    echo json_encode(["error" => "Número de hóspedes inválido"]);
+    exit;
+  }
 
   // Insere os dados na tabela de reservas
   $sql = "INSERT INTO reservations (room_id, guest_name, guest_cpf, check_in, check_out, guests, card_number, card_expiry, card_cvv) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("issssisss", $room_id, $guest_name, $guest_cpf, $check_in, $check_out, $guests, $card_number, $card_expiry, $card_cvv);
 
   if ($stmt->execute()) {
-    // Retorna um JSON com uma mensagem de sucesso
-    echo json_encode(["message" => "Reserva feita com sucesso!", "reservation_id" => $stmt->insert_id]);
+    echo json_encode([
+      "message" => "Reserva feita com sucesso!",
+      "reservation_id" => $stmt->insert_id,
+    ]);
   } else {
     echo json_encode(["error" => "Erro ao fazer reserva: " . $stmt->error]);
   }

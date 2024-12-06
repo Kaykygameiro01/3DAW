@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área do Cliente</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <h1>Bem-vindo, <span id="cliente-nome"></span>!</h1>
+    <nav>
+      <a href="index.html">Reservar Quarto</a>
+      <a href="minhas_reservas.html">Minhas Reservas</a>
+      <a href="index.html">Sair</a>
+    </nav>
+  </header>
+
+  <body>
+
+    <main>
+      <section id="rooms">
+        <h2>Opções de Quartos</h2>
+        <div class="room" id="room-4">
+          <h3>Quarto com 4 vagas</h3>
+          <p>1 cama beliche e 1 cama de casal. Contém banheiro.</p>
+          <button onclick="reserveRoom(4)">Reservar agora</button>
+        </div>
+        <div class="room" id="room-8">
+          <h3>Quarto com 8 vagas</h3>
+          <p>4 camas beliche. Não contém banheiro.</p>
+          <button onclick="reserveRoom(8)">Reservar agora</button>
+        </div>
+        <div class="room" id="room-12">
+          <h3>Quarto com 12 vagas</h3>
+          <p>6 camas beliche. Contém banheiro.</p>
+          <button onclick="reserveRoom(12)">Reservar agora</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+
+
+</body>
+
+</html>

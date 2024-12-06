@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 
 $host = 'localhost';
-$db = 'albergue';
+$db = 'hostel_app';
 $user = 'root';
 $pass = '';
 

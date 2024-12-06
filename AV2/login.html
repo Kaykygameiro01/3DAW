@@ -6,19 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Minimundo Albergue</title>
   <link rel="stylesheet" href="css/cadastro.css">
-
 </head>
 
 <body>
   <div>
     <h1>Login</h1>
-    <form action="login.html" method="post">
-      <input type="text" placeholder="Usuário" name="usuario" required>
+    <form id="login-form" method="post">
+      <input type="text" placeholder="Email" name="email" required>
       <input type="password" placeholder="Senha" name="senha" required>
       <button type="submit">Entrar</button>
     </form>
     <p>Não é usuário? <a href="cadastro.html">Criar conta</a></p>
+    <p id="login-error" style="color: red; display: none;"></p>
   </div>
+  <script src="js/login.js"></script>
 </body>
 
 </html>
